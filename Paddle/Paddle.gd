@@ -17,10 +17,8 @@ func update_color():
 
 func emit_particle(pos):
 	if HUD.particle_paddle:
-		$Particle2D.position = pos
 		$Particles2D.emitting = true
-	else:
-		pass
+
 
 func _on_HUD_changed():
 	update_color()
