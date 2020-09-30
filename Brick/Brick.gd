@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var HUD = get_node("/root/Game/HUD")
 var row = 0
 var col = 0
+var dying = false
 
 func _ready():
 	HUD.connect("changed",self,"_on_HUD_changed")
@@ -16,9 +17,10 @@ func update_color():
 
 func emit_particle(pos):
 	if HUD.particle_blocks:
-		pass
+		if row == 0:
+			$Color.color = Color(224,49,49)
 	else:
-		pass
+		$Color.color = Color(1,1,1,1)
 	
 	
 func _on_HUD_changed():
@@ -26,4 +28,7 @@ func _on_HUD_changed():
 
 
 func die():
-	queue_free()
+	dying = true
+	$Color.color.a = 0
+	collision_layer = 0
+	collision_mask = 0
