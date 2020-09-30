@@ -30,7 +30,7 @@ func update_color():
 
 func emit_particle(pos):
 	if HUD.particle_blocks:
-		$Particle2D.global_position = pos
+		$Particles2D.global_position = pos
 		$Particles2D.emitting = true
 	
 	
